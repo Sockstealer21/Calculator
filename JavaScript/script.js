@@ -43,7 +43,7 @@ const addBtn = document.getElementById('+')
 const subtractBtn = document.getElementById('-')
 const multiplyBtn = document.getElementById('*')
 const divideBtn = document.getElementById('/')
-const equalsBtn = document.etElementById('=')
+const equalsBtn = document.getElementById('=')
 const clearBtn = document.getElementById('Clear')
 
 let num = display.value
