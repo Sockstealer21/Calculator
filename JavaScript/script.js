@@ -31,9 +31,12 @@ clearing = function(){
 }
 
 numberinsert = function(){
-    numberArray.push(num)
+    calcArray.push(num)
+    calcArray.push()
     clearing()
+    if (calcArray.length === 2){
 
+    }
 }
 
 const display = document.querySelector('input') 
@@ -48,7 +51,7 @@ const clearBtn = document.getElementById('Clear')
 
 let num = display.value
 let operateBtn
-let numberArray = []
+let calcArray = []
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
