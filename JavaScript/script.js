@@ -44,6 +44,7 @@ const clearBtn = document.querySelector('#clear')
 let num1 = display.value
 let num2 
 let operateBtn
+let numberArray = []
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
