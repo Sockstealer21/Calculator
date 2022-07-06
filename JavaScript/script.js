@@ -108,6 +108,10 @@ equalsBtn.addEventListener('click', ()=>{
     console.log(calcArray) 
     display.value = operate(operateBtn,num,num2)
     funcCalled = true
+    if(display.value === undefined){
+        calcArray.length = 0;
+        clearing()
+    }
 })
 
 
