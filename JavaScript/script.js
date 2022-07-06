@@ -32,11 +32,16 @@ clearing = function(){
 
 numberinsert = function(){
     calcArray.push(num)
-    calcArray.push()
     clearing()
-    if (calcArray.length === 2){
-
+    if (calcArray.length === 3){ // try to get the result and move it to the first value in the array and set the array length to 1
+       num = parseInt(operate(calcArray[1],calcArray[0],calcArray[2])) 
+       parseInt(num)
+       calcArray.length = 0
+       calcArray.push(num)
     }
+    calcArray.push(operateBtn)
+    
+    console.log(calcArray)
 }
 
 const display = document.querySelector('input') 
@@ -55,14 +60,17 @@ let calcArray = []
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
+        if(calcArray.length === 0){
+            display.value = ''
+        }
         display.value += button.textContent
     })
 })
 
-addBtn.addEventListener('click', () =>{
+addBtn.addEventListener('click', ()=> {
     num = parseInt(display.value)
-    clearing()
     operateBtn = '+'
+    numberinsert()
 })
 
 subtractBtn.addEventListener('click', () =>{
@@ -83,11 +91,19 @@ divideBtn.addEventListener('click', () =>{
     operateBtn = '/'
 })
 
-clearBtn.addEventListener('click', clearing)    
+clearBtn.addEventListener('click',() =>{
+    calcArray.length = 0;
+    clearing()
+    console.log(calcArray) 
+} )    
 
 equalsBtn.addEventListener('click', ()=>{
     num2 = parseInt(display.value)
+    calcArray.length = 0;
+    clearing()
+    console.log(calcArray) 
     display.value = operate(operateBtn,num,num2)
+    
 })
 
 
