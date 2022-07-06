@@ -33,14 +33,19 @@ clearing = function(){
 numberinsert = function(){
     calcArray.push(num)
     clearing()
-    if (calcArray.length === 3){ // try to get the result and move it to the first value in the array and set the array length to 1
-       num = parseInt(operate(calcArray[1],calcArray[0],calcArray[2])) 
+    if(calcArray[1] === '/' && calcArray[2] === 0){
+        display.value = 'WHAT ARE YOU DOING'
+        calcArray.length = 0;
+    }
+    if (calcArray.length === 3){ // try to get the result and move it to the first value in the array and set the array length to 1 
+        num = parseInt(operate(calcArray[1],calcArray[0],calcArray[2])) 
        parseInt(num)
        calcArray.length = 0
        calcArray.push(num)
        display.value = calcArray[0]
-    }
+    } 
     calcArray.push(operateBtn)
+    if (calcArray[0] === '/' || calcArray[0] === '+' || calcArray[0] === '-' || calcArray[0] === '*') calcArray.length = 0
     funcCalled = true
     console.log(calcArray)
 }
@@ -112,6 +117,7 @@ equalsBtn.addEventListener('click', ()=>{
         calcArray.length = 0;
         clearing()
     }
+    if (operateBtn === '/' && num2 === 0) display.value = 'STOP THAT NOW!'
 })
 
 
