@@ -38,9 +38,10 @@ numberinsert = function(){
        parseInt(num)
        calcArray.length = 0
        calcArray.push(num)
+       display.value = calcArray[0]
     }
     calcArray.push(operateBtn)
-    
+    funcCalled = true
     console.log(calcArray)
 }
 
@@ -57,11 +58,13 @@ const clearBtn = document.getElementById('Clear')
 let num = display.value
 let operateBtn
 let calcArray = []
+let funcCalled = false
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
-        if(calcArray.length === 0){
-            display.value = ''
+        if(funcCalled){
+            clearing()
+            funcCalled = false
         }
         display.value += button.textContent
     })
@@ -75,26 +78,27 @@ addBtn.addEventListener('click', ()=> {
 
 subtractBtn.addEventListener('click', () =>{
     num = parseInt(display.value)
-    clearing()
     operateBtn = '-'
+    numberinsert()
 })
 
 multiplyBtn.addEventListener('click', () =>{
     num = parseInt(display.value)
-    clearing()
     operateBtn = '*'
+    numberinsert()
 })
 
 divideBtn.addEventListener('click', () =>{
     num = parseInt(display.value)
-    clearing()
     operateBtn = '/'
+    numberinsert()
 })
 
 clearBtn.addEventListener('click',() =>{
     calcArray.length = 0;
     clearing()
     console.log(calcArray) 
+    funcCalled = true
 } )    
 
 equalsBtn.addEventListener('click', ()=>{
@@ -103,7 +107,7 @@ equalsBtn.addEventListener('click', ()=>{
     clearing()
     console.log(calcArray) 
     display.value = operate(operateBtn,num,num2)
-    
+    funcCalled = true
 })
 
 
