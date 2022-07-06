@@ -38,8 +38,8 @@ numberinsert = function(){
         calcArray.length = 0;
     }
     if (calcArray.length === 3){ // try to get the result and move it to the first value in the array and set the array length to 1 
-        num = parseInt(operate(calcArray[1],calcArray[0],calcArray[2])) 
-       parseInt(num)
+        num = +parseFloat(operate(calcArray[1],calcArray[0],calcArray[2])).toFixed(4) 
+       parseFloat(num).toFixed(4)
        calcArray.length = 0
        calcArray.push(num)
        display.value = calcArray[0]
@@ -64,6 +64,7 @@ let num = display.value
 let operateBtn
 let calcArray = []
 let funcCalled = false
+let answer 
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
@@ -76,25 +77,25 @@ numberBtn.forEach((button) =>{
 })
 
 addBtn.addEventListener('click', ()=> {
-    num = parseInt(display.value)
+    num = +parseFloat(display.value).toFixed(4)
     operateBtn = '+'
     numberinsert()
 })
 
 subtractBtn.addEventListener('click', () =>{
-    num = parseInt(display.value)
+    num = +parseFloat(display.value).toFixed(4)
     operateBtn = '-'
     numberinsert()
 })
 
 multiplyBtn.addEventListener('click', () =>{
-    num = parseInt(display.value)
+    num = +parseFloat(display.value).toFixed(4)
     operateBtn = '*'
     numberinsert()
 })
 
 divideBtn.addEventListener('click', () =>{
-    num = parseInt(display.value)
+    num = +parseFloat(display.value).toFixed(4)
     operateBtn = '/'
     numberinsert()
 })
@@ -107,11 +108,11 @@ clearBtn.addEventListener('click',() =>{
 } )    
 
 equalsBtn.addEventListener('click', ()=>{
-    num2 = parseInt(display.value)
+    num2 = parseFloat(display.value)
     calcArray.length = 0;
     clearing()
     console.log(calcArray) 
-    display.value = operate(operateBtn,num,num2)
+    display.value = +parseFloat(operate(operateBtn,num,num2)).toFixed(4)
     funcCalled = true
     if(display.value === undefined){
         calcArray.length = 0;
@@ -119,6 +120,8 @@ equalsBtn.addEventListener('click', ()=>{
     }
     if (operateBtn === '/' && num2 === 0) display.value = 'STOP THAT NOW!'
 })
+
+
 
 
 
