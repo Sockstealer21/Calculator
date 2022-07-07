@@ -33,6 +33,13 @@ clearing = function(){
 numberinsert = function(){
     calcArray.push(num)
     clearing()
+  /*  if (calcArray[0] === NaN) {
+        display.value = calcArray[2]
+        clearing()
+        console.log(calcArray)
+        calcArray.length = 0
+        calcArray.push(num)
+    }*/
     if(calcArray[1] === '/' && calcArray[2] === 0){
         display.value = 'WHAT ARE YOU DOING'
         calcArray.length = 0;
@@ -59,6 +66,7 @@ const multiplyBtn = document.getElementById('*')
 const divideBtn = document.getElementById('/')
 const equalsBtn = document.getElementById('=')
 const clearBtn = document.getElementById('Clear')
+const decibalBtn = document.getElementById('.')
 
 let num = display.value
 let operateBtn
@@ -66,6 +74,7 @@ let calcArray = []
 let funcCalled = false
 let answer 
 let num2
+let decibalInserted = false
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
@@ -75,6 +84,15 @@ numberBtn.forEach((button) =>{
         }
         display.value += button.textContent
     })
+})
+
+decibalBtn.addEventListener('click',()=>{
+    if(decibalInserted ===  true){
+
+    } else{ 
+        display.value += decibalBtn.textContent
+        decibalInserted = true
+    }
 })
 
 addBtn.addEventListener('click', ()=> {
@@ -110,13 +128,13 @@ clearBtn.addEventListener('click',() =>{
 
 equalsBtn.addEventListener('click', ()=>{
     if (display.value === '') num2 = num
+    else num2 = display.value
     console.log(calcArray) 
     if (calcArray.length === 2){
         clearing()
         display.value = +parseFloat(operate(operateBtn,num,num2)).toFixed(4)
         funcCalled = true
         calcArray.length = 0;
-        
     }
 
     if (operateBtn === '/' && num2 === 0) display.value = 'STOP THAT NOW!'
