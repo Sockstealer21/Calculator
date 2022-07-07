@@ -65,6 +65,7 @@ let operateBtn
 let calcArray = []
 let funcCalled = false
 let answer 
+let num2
 
 numberBtn.forEach((button) =>{
     button.addEventListener('click', () =>{
@@ -108,16 +109,16 @@ clearBtn.addEventListener('click',() =>{
 } )    
 
 equalsBtn.addEventListener('click', ()=>{
-    num2 = parseFloat(display.value)
-    calcArray.length = 0;
-    clearing()
+    if (display.value === '') num2 = num
     console.log(calcArray) 
-    display.value = +parseFloat(operate(operateBtn,num,num2)).toFixed(4)
-    funcCalled = true
-    if(display.value === undefined){
-        calcArray.length = 0;
+    if (calcArray.length === 2){
         clearing()
+        display.value = +parseFloat(operate(operateBtn,num,num2)).toFixed(4)
+        funcCalled = true
+        calcArray.length = 0;
+        
     }
+
     if (operateBtn === '/' && num2 === 0) display.value = 'STOP THAT NOW!'
 })
 
